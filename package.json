@@ -1,0 +1,23 @@
+{
+  "name": "sonance.js-examples",
+  "version": "1.0.1",
+  "description": "Some examples demonstrating the quirks of @hamitzor/sonance.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hamitzor/sonance.js-examples.git"
+  },
+  "author": "Hamit Can Zor (thenrerise@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hamitzor/sonance.js-examples/issues"
+  },
+  "homepage": "https://github.com/hamitzor/sonance.js-examples#readme",
+  "packageManager": "yarn@4.0.2",
+  "dependencies": {
+    "@hamitzor/sonance.js": "1.0.1",
+    "ansi": "^0.3.1",
+    "console-clear": "^1.1.1",
+    "inquirer": "^9.2.12"
+  },
+  "type": "module"
+}
