@@ -12,7 +12,6 @@
     "url": "https://github.com/hamitzor/sonance.js-examples/issues"
   },
   "homepage": "https://github.com/hamitzor/sonance.js-examples#readme",
-  "packageManager": "yarn@4.0.2",
   "dependencies": {
     "@hamitzor/sonance.js": "2.0.1",
     "ansi": "^0.3.1",
