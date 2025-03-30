@@ -1,6 +1,6 @@
 {
   "name": "sonance.js-examples",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Some examples demonstrating the quirks of @hamitzor/sonance.js",
   "repository": {
     "type": "git",
@@ -13,7 +13,7 @@
   },
   "homepage": "https://github.com/hamitzor/sonance.js-examples#readme",
   "dependencies": {
-    "@hamitzor/sonance.js": "2.0.1",
+    "@hamitzor/sonance.js": "2.0.2",
     "ansi": "^0.3.1",
     "console-clear": "^1.1.1",
     "inquirer": "^9.2.12"
