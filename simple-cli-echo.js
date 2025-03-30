@@ -84,8 +84,8 @@ const version = JSON.parse(readFileSync(resolve(dirname(fileURLToPath(import.met
 
 consoleClear()
 console.log(`Echoing audio\n`)
-console.log(`sonance.js ${version}`)
-console.log(`rtaudio.js ${rtAudioVersion}\n`)
+console.log(`sonance.js v${version}`)
+console.log(`RtAudio v${rtAudioVersion}\n`)
 console.log(`Output device\t\t${defaultOutputDevice.name}`)
 console.log(`Input device\t\t${defaultInputDevice.name}`)
 console.log(`Native API name\t\t${api.name}`)
