@@ -35,9 +35,9 @@ if (!defaultOutputDevice) {
   process.exit(1)
 }
 
-// Crate a file read stream
-const socket = new Socket()
-socket.connect(3000, '127.0.0.1')
+// Crate a TCP client stream
+const client = new Socket()
+client.connect(3000, '127.0.0.1')
 
 const sampleRate = 48000 // Hz
 const frameSize = 40 // ms
@@ -53,7 +53,7 @@ const audioWriteStream = new AudioOutputStream({
 
 // Use stream.pipeline to connect them
 pipeline(
-  socket,
+  client,
   audioWriteStream,
   (err) => {
     if (err) {
@@ -73,7 +73,7 @@ audioWriteStream.on('close', () => {
 const version = JSON.parse(readFileSync(resolve(dirname(fileURLToPath(import.meta.url)), 'node_modules', '@hamitzor', 'sonance.js', 'package.json'))).version
 
 consoleClear()
-console.log(`Streaming from ${socket.remoteAddress}:${socket.remotePort}\n`)
+console.log(`Streaming from ${client.remoteAddress}:${client.remotePort}\n`)
 console.log(`sonance.js v${version}`)
 console.log(`RtAudio v${rtAudioVersion}\n`)
 console.log(`Output device\t\t${defaultOutputDevice.name}`)
@@ -84,7 +84,7 @@ console.log(`Time\t\tRead\t\tMemory usage`)
 
 audioWriteStream.on('api:processed', () => {
   const time = audioWriteStream.time.toFixed(0)
-  const bytesRead = (socket.bytesRead / 1024 / 1024).toFixed(1)
+  const bytesRead = (client.bytesRead / 1024 / 1024).toFixed(1)
   const rss = (process.memoryUsage().rss / 1024 / 1024).toFixed(0)
   process.stdout.write(`\r\u001b[2K${time}s\t\t${bytesRead} MB\t\t${rss} MB\t\t\t(Ctrl+C to exit)`)
 })
