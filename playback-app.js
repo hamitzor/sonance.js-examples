@@ -33,14 +33,6 @@ const audioWriteStream = new AudioOutputStream({
   bufferFrames: 48000 / (1000 / 40),
 })
 
-fileReadStream.on('close', () => {
-  console.log('closed')
-})
-
-fileReadStream.on('end', () => {
-  console.log('end')
-})
-
 // Use stream.pipeline to connect them
 pipeline(
   fileReadStream,
