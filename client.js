@@ -72,19 +72,21 @@ audioWriteStream.on('close', () => {
 
 const version = JSON.parse(readFileSync(resolve(dirname(fileURLToPath(import.meta.url)), 'node_modules', '@hamitzor', 'sonance.js', 'package.json'))).version
 
-consoleClear()
-console.log(`Streaming from ${client.remoteAddress}:${client.remotePort}\n`)
-console.log(`sonance.js v${version}`)
-console.log(`RtAudio v${rtAudioVersion}\n`)
-console.log(`Output device\t\t${defaultOutputDevice.name}`)
-console.log(`Native API name\t\t${api.name}`)
-console.log(`Sample rate\t\t${sampleRate} Hz`)
-console.log(`Frame size\t\t${frameSize}ms\n`)
-console.log(`Time\t\tRead\t\tMemory usage`)
+client.on('connect', () => {
+  consoleClear()
+  console.log(`Streaming from ${client.remoteAddress}:${client.remotePort}\n`)
+  console.log(`sonance.js v${version}`)
+  console.log(`RtAudio v${rtAudioVersion}\n`)
+  console.log(`Output device\t\t${defaultOutputDevice.name}`)
+  console.log(`Native API name\t\t${api.name}`)
+  console.log(`Sample rate\t\t${sampleRate} Hz`)
+  console.log(`Frame size\t\t${frameSize}ms\n`)
+  console.log(`Time\t\tRead\t\tMemory usage`)
 
-audioWriteStream.on('api:processed', () => {
-  const time = audioWriteStream.time.toFixed(0)
-  const bytesRead = (client.bytesRead / 1024 / 1024).toFixed(1)
-  const rss = (process.memoryUsage().rss / 1024 / 1024).toFixed(0)
-  process.stdout.write(`\r\u001b[2K${time}s\t\t${bytesRead} MB\t\t${rss} MB\t\t\t(Ctrl+C to exit)`)
+  audioWriteStream.on('api:processed', () => {
+    const time = audioWriteStream.time.toFixed(0)
+    const bytesRead = (client.bytesRead / 1024 / 1024).toFixed(1)
+    const rss = (process.memoryUsage().rss / 1024 / 1024).toFixed(0)
+    process.stdout.write(`\r\u001b[2K${time}s\t\t${bytesRead} MB\t\t${rss} MB\t\t\t(Ctrl+C to exit)`)
+  })
 })
