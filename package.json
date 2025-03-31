@@ -13,10 +13,10 @@
   },
   "homepage": "https://github.com/hamitzor/sonance.js-examples#readme",
   "dependencies": {
+    "@discordjs/opus": "^0.10.0",
     "@hamitzor/sonance.js": "2.1.0",
     "ansi": "^0.3.1",
     "console-clear": "^1.1.1",
     "inquirer": "^9.2.12"
-  },
-  "type": "module"
+  }
 }
